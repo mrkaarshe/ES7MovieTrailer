@@ -145,7 +145,7 @@ const Home = () => {
       <div className="backdrop-blur-sm bg-black/40 absolute w-full h-screen"></div>
 
       <div
-        className="z-100 container relative h-[95vh] lg:h-[70vh] mb-3 md:my-3 lg:my-20 rounded-lg max-w-7xl mx-auto overflow-hidden text-white transition-all duration-700 ease-in-out shadow-xs"
+        className="z-100 container relative h-[95vh] md:h-[90vh] lg:h-[70vh] mb-3  lg:my-20 rounded-lg max-w-7xl mx-auto overflow-hidden text-white transition-all duration-700 ease-in-out shadow-xs"
         style={{
           backgroundImage: selectedMovie
             ? `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`
