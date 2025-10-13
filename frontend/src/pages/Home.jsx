@@ -290,7 +290,7 @@ const Home = () => {
 
     
           
-          <div className={`flex flex-col md:flex-row  justify-between items-center absolute ${togelFooter ? ' -bottom-53' : 'bottom-0'}  right-1 left-1 bg-gray-400/10 backdrop-blur-xs rounded-t-4xl shadow-lg p-5`}>
+          <div className={`flex flex-col md:flex-row  justify-between items-center absolute ${togelFooter ? ' -bottom-51' : 'bottom-0'}  right-1 left-1 bg-gray-400/10 backdrop-blur-xs rounded-t-4xl shadow-lg p-5`}>
           <button onClick={()=> setTogelFooter(!togelFooter)} className="absolute w-20 h-20 -top-12 right-0 text-4xl">{!togelFooter ? <MdOutlineKeyboardArrowDown size={50} /> :  <MdOutlineKeyboardArrowUp size={50} /> }</button>
           {selectedMovie && (
             <div className="relative z-10 max-w-2xl">
