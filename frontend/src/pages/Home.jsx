@@ -6,6 +6,7 @@ import { SlRefresh } from "react-icons/sl";
 import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { LuUser } from "react-icons/lu";
+import { MdOutlineKeyboardArrowUp ,MdOutlineKeyboardArrowDown } from "react-icons/md";
 import axios from "axios";
 import { toast } from "sonner";
 
@@ -20,6 +21,7 @@ const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [favorites, setFavorites] = useState([]);
+  const [togelFooter ,setTogelFooter] = useState(null)
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -133,7 +135,7 @@ const Home = () => {
 
   return (
     <div
-      className="min-h-screen z-10 fixed top-0 left-0 right-0 bg-black/80 px-0 sm:px-3 md:px-0"
+      className="min-h-screen z-10 fixed top-0 left-0 right-0  px-0 sm:px-3 md:px-0"
       style={{
         backgroundImage: selectedMovie
           ? `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`
@@ -142,7 +144,7 @@ const Home = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="backdrop-blur-sm bg-black/40 absolute w-full h-screen"></div>
+      <div className="backdrop-blur-xs bg-black/10 absolute w-full h-screen"></div>
 
       <div
         className="z-100 container relative h-[95vh] md:h-[90vh] lg:h-[70vh] mb-3  lg:my-20 rounded-lg max-w-7xl mx-auto overflow-hidden text-white transition-all duration-700 ease-in-out shadow-xs"
@@ -151,6 +153,7 @@ const Home = () => {
             ? `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`
             : "none",
           backgroundSize: "cover",
+          backgroundRepeat :"no-repeat",
           backgroundPosition: "center",
         }}
       >
@@ -182,7 +185,7 @@ const Home = () => {
                   onClick={() => navigate("/Favorite")}
                   className="px-1 py-2 rounded-md hover:text-white transition"
                 >
-                  <MdOutlineFavoriteBorder size={20} />
+                  <MdOutlineFavoriteBorder size={25} />
                 </button>
               </div>
 
@@ -193,7 +196,7 @@ const Home = () => {
                     onClick={() => setUserTogel(!userTogel)}
                   >
                     <span className="h-10 rounded-full flex justify-center items-center hover:text-white">
-                      <LuUser size={20} />
+                      <LuUser size={22} />
                     </span>
                   </div>
                   <div
@@ -203,7 +206,7 @@ const Home = () => {
                   >
                     <div className="flex gap-2 items-center">
                       <span className=" rounded-full flex justify-center items-center">
-                        <FaUser size={20} />
+                        <FaUser size={22} />
                       </span>
                       {user.name}
                     </div>
@@ -218,7 +221,7 @@ const Home = () => {
               ) : (
                 <Link
                   to="/auth"
-                  className="border border-gray-400 px-4 py-1 text-sm"
+                  className="border-2 border-gray-200 px-4 py-1 text-sm"
                 >
                   Login
                 </Link>
@@ -285,8 +288,10 @@ const Home = () => {
           )}
         </nav>
 
-        
-        <div className="flex flex-col md:flex-row justify-between items-center absolute bottom-0 right-1 left-1 bg-gray-400/10 backdrop-blur-xs rounded-t-4xl shadow-lg p-5">
+    
+          
+          <div className={`flex flex-col md:flex-row  justify-between items-center absolute ${togelFooter ? ' -bottom-50' : 'bottom-0'}  right-1 left-1 bg-gray-400/10 backdrop-blur-xs rounded-t-4xl shadow-lg p-5`}>
+          <button onClick={()=> setTogelFooter(!togelFooter)} className="absolute w-20 h-20 -top-12 right-0 text-4xl">{!togelFooter ? <MdOutlineKeyboardArrowDown size={50} /> :  <MdOutlineKeyboardArrowUp size={50} /> }</button>
           {selectedMovie && (
             <div className="relative z-10 max-w-2xl">
               <h2 className="text-lg font-Goldman font-bold text-white">
@@ -322,7 +327,7 @@ const Home = () => {
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
-                    className="cursor-pointer rounded-lg min-w-[150px] h-[220px] object-cover rshadow-lg"
+                    className="cursor-pointer rounded-lg min-w-30 md:w-60 object-cover rshadow-lg"
                     onClick={() => handleMovieClick(movie)}
                   />
                 </div>
@@ -336,11 +341,14 @@ const Home = () => {
               >
                 <SlRefresh />
               </button>
+
+        </div>
+        
             </div>
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 

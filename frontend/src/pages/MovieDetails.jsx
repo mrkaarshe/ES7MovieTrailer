@@ -50,7 +50,7 @@ const MovieDetails = () => {
         
    <div className="backdrop-blur-sm bg-black/40 absolute w-full h-screen"></div>
    
-    <div className="absolute top-10 right-0 left-0 min-h-140  p-4 max-w-7xl  mx-auto  mt-0 md:mt-20 rounded-2xl shadow shadow-rose-400"
+    <div className="absolute top-10 right-0 left-0 min-h-140  p-4 max-w-7xl  mx-auto  mt-0 md:mt-20 rounded-2xl"
           style={{
         backgroundImage: movie
           ? `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`

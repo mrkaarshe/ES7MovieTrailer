@@ -75,7 +75,7 @@ const handleDeleteMovie = async (id) => {
 
   return (
     <div
-      className="min-h-screen relative"
+      className="min-h-screen flex justify-center items-center relative"
       style={{
         backgroundImage: `url(https://i.pinimg.com/1200x/50/35/f2/5035f2cf008c38e4eeb86d0b9802d10c.jpg)`,
         backgroundSize: "cover",
@@ -84,7 +84,7 @@ const handleDeleteMovie = async (id) => {
     >
       <div className="absolute bg-black/10 w-full backdrop-blur-2xl h-full"></div>
 
-      <div className="absolute max-w-7xl mx-auto top-0 md:top-20 p-10 right-0 left-0 backdrop-blur-sm bg-gray-700/20 rounded-lg min-h-100 max-h-200 overflow-y-auto scrollbar-hide">
+      <div className="absolute max-w-7xl mx-auto top-0 md:top-20 p-10 right-0 left-0 backdrop-blur-sm bg-gray-700/20 rounded-lg min-h-screen md:min-h-200 md:max-h-200 overflow-y-auto scrollbar-hide">
         <h1 className="text-3xl text-center py-3 font-bold font-Goldman">
           {movies.length > 0 ? "Your Favorite Movies" : "No Movies Found"}
         </h1>
