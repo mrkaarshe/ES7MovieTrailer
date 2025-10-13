@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* App.css ama index.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE iyo Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@theme {
+  --font-Goldman: "Goldman", cursive;
+}
+
+@theme {
+  --font-Roboto: 'Roboto', cursive;
+}
+
+@theme {
+  --font-Poppins: 'Poppins', cursive;
+}
+
+
+/* hide scrollbar but keep scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge (WebKit) */
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
