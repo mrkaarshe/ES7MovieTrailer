@@ -10,11 +10,7 @@ dotenv.config();
 const app = express();
 import cors from "cors";
 
-app.use(cors({
-  origin: "https://kaarshemovietrailer.onrender.com/", 
-  methods: ["GET","POST","DELETE","PUT","OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
+app.use(cors());
 
 app.use(express.json());
 
