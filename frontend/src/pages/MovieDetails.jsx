@@ -98,12 +98,7 @@ const MovieDetails = () => {
                         >
                          <IoChevronBackCircleOutline/> Back To Menu 
                         </button>
-                                        <button
-                                          onClick={() => handleLoveMovie(selectedMovie)}
-                                          className="px-4 py-2 rounded border hover:border-0"
-                                        >
-                                          <MdOutlineFavoriteBorder size={20} />
-                                        </button>
+
                       </div>
                     </div>
         </div>
