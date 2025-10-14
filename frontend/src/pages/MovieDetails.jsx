@@ -30,13 +30,22 @@ const MovieDetails = () => {
     fetchDetails();
     fetchTrailer();
   }, [id]);
+  
 
   const handlenavigat = () =>{
     navigate('/')
   }
 
-  if (!movie) return <div className=' flex justify-center items-center my-30 mx-auto min-h-screen' ><p className="p-4  w-30 h-30 border-8 border-cyan-400 rounded-full border-t-transparent animate-spin"></p></div>;
-
+  if (!movie) return (
+        <div className="flex items-center justify-center h-screen bg-black">
+      <div className="flex space-x-2">
+        <span className="w-7 h-7 bg-cyan-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
+        <span className="w-7 h-7 bg-cyan-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
+        <span className="w-7 h-7 bg-cyan-400 rounded-full animate-bounce" />
+        <span className="w-7 h-7 bg-cyan-400 rounded-full animate-bounce [animation-delay:0.15s]" />
+      </div>
+    </div>
+  )
   return (
     <>
     <div  
@@ -49,9 +58,9 @@ const MovieDetails = () => {
         backgroundPosition: "center",
       }}>
         
-   <div className="backdrop-blur-sm bg-black/40 absolute w-full h-screen"></div>
+   <div className="backdrop-blur-sm bg-black/10 absolute w-full h-screen"></div>
    
-    <div className="absolute top-10 right-0 left-0 min-h-140  p-4 max-w-7xl  mx-auto  mt-0 md:mt-20 rounded-2xl"
+    <div className="absolute top-10 right-0  left-0 min-h-140  p-4 max-w-7xl  mx-auto  mt-0 md:mt-20 rounded-2xl"
           style={{
         backgroundImage: movie
           ? `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
@@ -59,17 +68,18 @@ const MovieDetails = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}>
+       
        <div className='flex flex-col justify-between items-center gap-5'>
-       <div className='flex flex-col lg:flex-row gap-5 w-full'>
-        <div className='bg-gray-700/10 backdrop-blur-sm w-1/1 lg:w-110 py-3  rounded-md px-5 mt-10'>
+       <div className='flex flex-col lg:flex-row gap-4 w-full'>
+        <div className='bg-gray-800/70 backdrop-blur-sm w-1/1 lg:w-115 py-3  rounded-md px-5 mt-10'>
         <div className='flex gap-3 justify-start  '>
-          <img
+      <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         className="mt-1 w-30 rounded-lg "
         alt={movie.title}
       />
       <div>
-              <h2 className="text-xl md:text-3xl font-semibold font-Goldman text-cyan-400">
+              <h2 className="text-xl md:text-3xl font-semibold font-Goldman text-cyan-500">
                         {movie?.title}
                       </h2>
             <p className="text-sm text-gray-200 mt-1">
@@ -84,11 +94,16 @@ const MovieDetails = () => {
                       <div className="flex gap-3 mt-5">
                         <button
                           onClick={() => navigate(`/`)}
-                          className="bg-gradient-to-r from-cyan-400 to-purple-400 w-1/1 text-gray-50 font-semibold py-2 px-3  hover:bg-cyan-400  flex justify-center items-center transition gap-3 "
+                          className="bg-gradient-to-r from-cyan-400 to-purple-400 w-1/2 text-gray-50 font-semibold py-2 px-3  hover:bg-cyan-400  flex justify-center items-center transition gap-3 "
                         >
                          <IoChevronBackCircleOutline/> Back To Menu 
                         </button>
-
+                                        <button
+                                          onClick={() => handleLoveMovie(selectedMovie)}
+                                          className="px-4 py-2 rounded border hover:border-0"
+                                        >
+                                          <MdOutlineFavoriteBorder size={20} />
+                                        </button>
                       </div>
                     </div>
         </div>
@@ -96,7 +111,7 @@ const MovieDetails = () => {
       
       {trailer ? (
         <iframe
-          className="w-full min-h-100 mt-1 md:mt-10 rounded-md "
+          className="w-full z-100 min-h-100 mt-1 md:mt-10 rounded-md "
           src={`https://www.youtube.com/embed/${trailer}`}
           title="Movie Trailer"
           allowFullScreen

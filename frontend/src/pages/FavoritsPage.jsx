@@ -69,9 +69,14 @@ const handleDeleteMovie = async (id) => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center mx-auto min-h-screen">
-        <p className="p-4 w-30 h-30 border-8 border-cyan-400 rounded-full border-t-transparent animate-spin"></p>
+        <div className="flex items-center justify-center h-screen bg-black">
+      <div className="flex space-x-2">
+        <span className="w-7 h-7 bg-cyan-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
+        <span className="w-7 h-7 bg-cyan-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
+        <span className="w-7 h-7 bg-cyan-400 rounded-full animate-bounce" />
+        <span className="w-7 h-7 bg-cyan-400 rounded-full animate-bounce [animation-delay:0.15s]" />
       </div>
+    </div>
     );
   }
 

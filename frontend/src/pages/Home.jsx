@@ -140,15 +140,14 @@ const Home = () => {
   }, []);
 
 {loading && (
-  <div className="flex flex-col items-center justify-center my-20">
-    <p className="p-4 mx-auto w-20 h-20 border-8 border-gray-400 rounded-full border-t-transparent animate-spin"></p>
-    <button
-      onClick={() => setLoading(false)}
-      className="mt-4 bg-red-500 text-cyan-400 px-4 py-2 rounded-lg"
-    >
-      stop Loading
-    </button>
-  </div>
+    <div className="flex items-center justify-center h-screen bg-black">
+      <div className="flex space-x-2">
+        <span className="w-7 h-7 bg-indigo-500 rounded-full animate-bounce [animation-delay:-0.3s]" />
+        <span className="w-7 h-7 bg-indigo-500 rounded-full animate-bounce [animation-delay:-0.15s]" />
+        <span className="w-7 h-7 bg-indigo-500 rounded-full animate-bounce" />
+        <span className="w-7 h-7 bg-indigo-500 rounded-full animate-bounce [animation-delay:0.15s]" />
+      </div>
+    </div>
 )}
   return (
     <div
@@ -181,18 +180,18 @@ const Home = () => {
               onClick={() => navigate("/")}
               className="text-cyan-400 text-2xl absolute left-2  md:text-3xl font-Goldman cursor-pointer flex justify-start items-center"
             >
-              MOVIE
-              <span  className="text-sm font-medium text-gray-300 hidden mt-2 md:block">/Trailer</span>
+              Reelz
+              <span  className="text-sm font-medium text-gray-200 hidden mt-2 md:block">/Trailer</span>
             </h1>
                 <div className="relative">
                  
                     <input
-                    className="h-5 px-7  min-w-8 w-54 md:w-70 lg:w-sm overflow-auto text-cyan-400 text-md outline-none bg-transparent placeholder-cyan-200"
+                    className="h-7 px-7  min-w-8 w-54 md:w-70 lg:w-sm overflow-auto text-cyan-400 text-md outline-none bg-transparent placeholder-cyan-200"
                     value={searchQuery}
                     placeholder="Search..."
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                  <i className="absolute  top-[3px] left-1 text-xl">
+                  <i className="absolute  top-[6px] left-1 text-xl">
                     <IoSearch />
                   </i>
  
@@ -240,7 +239,7 @@ const Home = () => {
               ) : (
                 <Link
                   to="/auth"
-                  className=" bg-cyan-400 text-black flex items-center gap-3 font-medium hover:border border-cyan-400 hover:bg-transparent hover:text-white  px-6 py-1 text-sm"
+                  className=" hover:bg-cyan-400 hover:text-black flex items-center gap-3 font-medium  border-cyan-400 border text-white  px-6 py-1 text-sm"
                 >
                 <HiOutlineLogout/>  Login
                 </Link>
@@ -256,7 +255,7 @@ const Home = () => {
           </div>
 
           {menuOpen && (
-            <div className="flex absolute right-1 left-1 justify-between px-5 bg-gray-900/30  h-20  top-17 pt-5 gap-5 md:hidden">
+            <div className="flex absolute right-[2px] left-[2px] rounded-md justify-between px-5 bg-gray-900/30  h-20  top-18 pt-5 gap-5 md:hidden">
 
 
               <button
@@ -290,7 +289,7 @@ const Home = () => {
                 <Link
                   to="/auth"
                   onClick={()=> setMenuOpen(false)}
-                  className="flex justify-center items-center gap-3 text-cyan font-medium  hover:bg-transparent hover:text-black  px-6 py-1 text-md"
+                  className="flex justify-center items-center gap-3 text-cyan font-medium  hover:bg-transparent hover:text-black  px-6 h-10 text-md"
                 >
                  <HiOutlineLogout size={22}/> Login
                 </Link>
