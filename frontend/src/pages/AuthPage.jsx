@@ -61,7 +61,7 @@ const handleRegister = async (e) => {
         backgroundPosition: "center",
       }}>
         <div className="absolute w-full bg-black/40 backdrop-blur-2xl h-full "></div>
-      <div className="absolute bg-gray-900/40  p-8 rounded-2xl shadow-lg w-full max-w-md border border-gray-700">
+      <div className="absolute bg-gray-900/40  p-8 rounded-2xl shadow-lg w-full max-w-md border border-cayn-400">
         <h1 className="text-3xl font-bold text-center text-white mb-6 font-Goldman">
           Welcome
         </h1>
@@ -72,8 +72,8 @@ const handleRegister = async (e) => {
               value="login"
               className={`px-5 py-2 rounded-xl font-semibold ${
                 tab === "login"
-                  ? "bg-white text-black"
-                  : "text-gray-300 hover:text-white"
+                  ? "bg-gradient-to-r from-cyan-400 to-purple-400"
+                  : "text-gray-100 hover:text-white"
               }`}
             >
               Login
@@ -82,8 +82,8 @@ const handleRegister = async (e) => {
               value="register"
               className={`px-5 py-2 rounded-xl font-semibold ${
                 tab === "register"
-                  ? "bg-white text-black"
-                  : "text-gray-300 hover:text-white"
+                  ? "bg-gradient-to-r from-cyan-400 to-purple-400"
+                  : "text-gray-100 hover:text-white"
               }`}
             >
               Register
@@ -95,14 +95,14 @@ const handleRegister = async (e) => {
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-white"
+                className="w-full p-3 rounded-lg bg-gray-800 border border-cayn-400 focus:outline-none focus:border-cyan-400"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-white"
+                className="w-full p-3 rounded-lg bg-gray-800 border border-cayn-400 focus:outline-none focus:border-cyan-400"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -121,27 +121,27 @@ const handleRegister = async (e) => {
               <input
                 type="text"
                 placeholder="name"
-                className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-white"
+                className="w-full p-3 rounded-lg bg-gray-800 border border-cayn-400 focus:outline-none focus:border-cyan-400"
                 value={name}
                 onChange={(e) => setname(e.target.value)}
               />
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-white"
+                className="w-full p-3 rounded-lg bg-gray-800 border border-cayn-400 focus:outline-none focus:border-cyan-400"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-white"
+                className="w-full p-3 rounded-lg bg-gray-800 border border-cayn-400 focus:outline-none focus:border-cyan-400"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="submit"
-                className="w-full py-3 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg transition"
+                className="w-full py-3 bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-semibold rounded-lg transition"
               >
                 Create Account
               </button>
