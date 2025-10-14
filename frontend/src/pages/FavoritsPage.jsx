@@ -21,7 +21,7 @@ const FavoritsPage = () => {
         return;
       }
 
-      const res = await axios.get("http://localhost:5000/api/favorites", {
+      const res = await axios.get("http://localhost:3000/api/favorites", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,7 +50,7 @@ const handleDeleteMovie = async (id) => {
     }
 
     const res = await axios.delete(
-      `http://localhost:5000/api/favorites/${id}`,
+      `http://localhost:3000/api/favorites/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -87,13 +87,13 @@ const handleDeleteMovie = async (id) => {
       <div className="absolute bg-black/10 w-full backdrop-blur-2xl h-full"></div>
 
       <div className="absolute max-w-7xl mx-auto top-0 md:top-20 p-10 right-0 left-0 backdrop-blur-sm bg-gray-700/20 rounded-lg min-h-screen md:min-h-200 md:max-h-200 overflow-y-auto scrollbar-hide">
-<div className="flex justify-between items-center my-5">
-          <h1 className="text-3xl text-cyan-400  py-2 font-bold font-Goldman">
-          {movies.length > 0 ? "Your Favorite Movies" : "No Movies Found"}
+       <div className="flex justify-between  items-center my-5">
+          <h1 className="text-xs md:text-3xl text-cyan-400  py-2 font-bold font-Goldman">
+          {movies.length > 0 ? "There Is Your Favorite Movies" : "No Movies Found!"}
         </h1>
-      <button
+          <button
           onClick={() => navigate("/")}
-          className=" w-1/3  text-gray-50 font-semibold py-2 px-3 flex items-center justify-end transition gap-3"
+          className=" text-xs md:text-2xl text-gray-50 font-semibold py-2 px-3 flex items-center justify-end transition gap-3"
         >
 
           <IoChevronBackCircleOutline/> Back To Menu

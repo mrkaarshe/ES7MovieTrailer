@@ -91,7 +91,7 @@ const Home = () => {
     }
 
     try {
-      const favoritesRes = await axios.get("http://localhost:5000/api/favorites", {
+      const favoritesRes = await axios.get("http://localhost:3000/api/favorites", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -105,7 +105,7 @@ const Home = () => {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/favorites",
+        "http://localhost:3000/api/favorites",
         {
           tmdbId: selectedMovie.id,
           title: selectedMovie.title,
@@ -187,12 +187,12 @@ const Home = () => {
                 <div className="relative">
                  
                     <input
-                    className="h-5 px-7  min-w-7 w-50 md:w-70 lg:w-md border-x-2 overflow-auto text-cyan-400 text-xs outline-none bg-transparent placeholder-cyan-200"
+                    className="h-5 px-7  min-w-8 w-54 md:w-70 lg:w-sm overflow-auto text-cyan-400 text-md outline-none bg-transparent placeholder-cyan-200"
                     value={searchQuery}
                     placeholder="Search..."
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                  <i className="absolute  top-1 left-2 text-lg">
+                  <i className="absolute  top-[3px] left-1 text-xl">
                     <IoSearch />
                   </i>
  
@@ -219,11 +219,11 @@ const Home = () => {
                     </span>
                   </div>
                   <div
-                    className={`bg-gray-700/40 backdrop-blur-2xl w-1/6 p-5 right-2 rounded-lg flex flex-col gap-5 top-19 absolute ${
+                    className={`bg-gray-700/40 backdrop-blur-2xl w-1/6 p-5 right-1 rounded-lg flex flex-col gap-5 top-21 absolute ${
                       userTogel ? "" : "hidden"
                     }`}
                   > 
-                    <div className="flex gap-2 items-center hover:bg-cyan-400 hover:text-black h-10 transition rounded-md px-2">
+                    <div className="flex gap-2 items-center hover:bg-cyan-400 cursor-pointer hover:text-black h-10 transition rounded-md px-2">
                       <span className=" rounded-full flex justify-center  ">
                         <LuUser size={22} />
                       </span>
@@ -231,7 +231,7 @@ const Home = () => {
                     </div>
                     <p
                       onClick={handleLogout}
-                      className=" flex gap-2 items-center h-10 rounded-md hover:bg-cyan-400 hover:text-black transition px-2"
+                      className=" flex gap-2 items-center h-10 rounded-md cursor-pointer hover:bg-cyan-400 hover:text-black transition px-2"
                     >
                      <HiOutlineLogin size={22}/> Logout
                     </p>
@@ -256,12 +256,12 @@ const Home = () => {
           </div>
 
           {menuOpen && (
-            <div className="flex justify-between px-5 border-t   mt-4 pt-5 gap-5 md:hidden">
+            <div className="flex absolute right-1 left-1 justify-between px-5 bg-gray-900/30  h-20  top-17 pt-5 gap-5 md:hidden">
 
 
               <button
                   onClick={() => { navigate("/Favorite"); setMenuOpen(false)}}
-                  className="px-1 py-2 rounded-md hover:text-cyan-400 transition"
+                  className="px-1 py-2 h-10 rounded-md hover:text-cyan-400 transition"
                 >
                   <MdOutlineFavoriteBorder size={25} />
                 </button>
@@ -301,7 +301,7 @@ const Home = () => {
 
     
           
-          <div className={`flex flex-col md:flex-row  justify-between items-center absolute ${togelFooter ? ' -bottom-51 md:-bottom-52' : 'bottom-0'}  right-1 left-1 bg-gray-900/30 backdrop-blur-xs transition-all ease-in-out rounded-t-lg shadow-lg p-5`}>
+          <div className={`flex flex-col md:flex-row  justify-between items-center absolute bottom-0 right-1 left-1 bg-gray-900/30 backdrop-blur-xs transition-all ease-in-out rounded-t-lg shadow-lg p-5`}>
           <button onClick={()=> setTogelFooter(!togelFooter)} className="absolute w-20 h-20 -top-12 right-0 text-4xl">{!togelFooter ? <MdOutlineKeyboardArrowDown size={50} /> :  <MdOutlineKeyboardArrowUp size={50} /> }</button>
           {selectedMovie && (
             <div data-aos="fade-rigth" className="relative z-10 max-w-2xl">
@@ -331,7 +331,7 @@ const Home = () => {
             </div>
           )}
 
-          <div  className="relative z-10 mt-5 w-full md:max-w-3xl overflow-x-auto scrollbar-hide">
+          <div   className={`${togelFooter ? "hidden" : ""} relative z-10 mt-5 w-full md:max-w-3xl overflow-x-auto scrollbar-hide`}>
             <div className="relative w-full flex gap-5">
               {movies.map((movie) => (
                 <div key={movie.id} className="relative border rounded-md ">
