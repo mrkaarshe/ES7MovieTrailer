@@ -36,7 +36,7 @@ const handleRegister = async (e) => {
   e.preventDefault();
   try {
     const res = await axios.post("http://localhost:5000/api/register", {
-      name, // sida backend-kaaga uu rabo
+      name,
       email,
       password,
     });
@@ -56,7 +56,7 @@ const handleRegister = async (e) => {
   return (
     <div className="flex relative items-center justify-center min-h-screen  bg-black text-white"
           style={{
-        backgroundImage: `url(https://i.pinimg.com/1200x/50/35/f2/5035f2cf008c38e4eeb86d0b9802d10c.jpg)`,
+        backgroundImage: `url()`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}>

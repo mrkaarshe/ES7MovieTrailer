@@ -7,7 +7,11 @@ import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { LuUser } from "react-icons/lu";
 import { MdOutlineKeyboardArrowUp ,MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { HiOutlineLogin ,HiOutlineLogout } from "react-icons/hi";
 import axios from "axios";
+import aos from 'aos'
+import 'aos/dist/aos.css';
+
 import { toast } from "sonner";
 
 const API_KEY = "a6dc73708449c9ddbd194f71534d5001";
@@ -122,17 +126,30 @@ const Home = () => {
     }
   };
 
-  //  Logout
+
   const handleLogout = () => {
     localStorage.removeItem("user");
     navigate("/auth");
   };
+    useEffect(() => {
+    aos.init({
+      duration: 1000,
+      once:true
 
-  if (!movies.length)
-    return (
-      <p className="p-4 flex justify-center items-center mx-auto my-40 w-30 h-30 border-8 border-gray-400 rounded-full border-t-transparent animate-spin"></p>
-    );
+    });
+  }, []);
 
+{loading && (
+  <div className="flex flex-col items-center justify-center my-20">
+    <p className="p-4 mx-auto w-20 h-20 border-8 border-gray-400 rounded-full border-t-transparent animate-spin"></p>
+    <button
+      onClick={() => setLoading(false)}
+      className="mt-4 bg-red-500 text-cyan-400 px-4 py-2 rounded-lg"
+    >
+      stop Loading
+    </button>
+  </div>
+)}
   return (
     <div
       className="min-h-screen z-10 fixed top-0 left-0 right-0  px-0 sm:px-3 md:px-0"
@@ -147,7 +164,7 @@ const Home = () => {
       <div className="backdrop-blur-xs bg-black/10 absolute w-full h-screen"></div>
 
       <div
-        className="z-100 container relative h-[95vh] md:h-[90vh] lg:h-[70vh] mb-3  lg:my-20 rounded-lg max-w-7xl mx-auto overflow-hidden text-white transition-all duration-700 ease-in-out shadow-xs"
+        className="z-100 container relative h-[95vh] md:h-[90vh] lg:h-[70vh] mb-3  lg:my-20 rounded-lg max-w-7xl mx-auto overflow-hidden text-cyan-400 transition-all duration-700 ease-in-out shadow-xs"
         style={{
           backgroundImage: selectedMovie
             ? `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`
@@ -158,130 +175,124 @@ const Home = () => {
         }}
       >
         {/*  Header */}
-        <nav className="backdrop-blur-xs bg-gray-500/20 text-white p-4 shadow-md rounded-b-3xl">
-          <div className="flex justify-between items-center">
+        <nav data-aos="fade-down" className="backdrop-blur-xs bg-gray-900/30 text-cyan-400 p-5 mmin-h-20  shadow-md rounded-b-3xl">
+          <div className="flex justify-end gap-3 items-center">
             <h1
               onClick={() => navigate("/")}
-              className="text-white text-2xl md:text-3xl font-Goldman cursor-pointer"
+              className="text-cyan-400 text-2xl absolute left-2  md:text-3xl font-Goldman cursor-pointer flex justify-start items-center"
             >
               MOVIE
-              <span className="text-sm font-medium text-gray-300">/Trailer</span>
+              <span  className="text-sm font-medium text-gray-300 hidden mt-2 md:block">/Trailer</span>
             </h1>
-
-            <div className="hidden md:flex items-center gap-1">
-              <div className="hidden abslute md:flex items-center gap-1">
                 <div className="relative">
-                  <input
-                    className="h-5 px-9 max-w-40 border-x-1 overflow-auto text-white outline-none bg-transparent placeholder-gray-300"
+                 
+                    <input
+                    className="h-5 px-7  min-w-7 w-50 md:w-70 lg:w-md border-x-2 overflow-auto text-cyan-400 text-xs outline-none bg-transparent placeholder-cyan-200"
                     value={searchQuery}
                     placeholder="Search..."
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                  <i className="absolute top-1 left-3 text-lg">
+                  <i className="absolute  top-1 left-2 text-lg">
                     <IoSearch />
                   </i>
+ 
                 </div>
-                <button
+
+            <div className="hidden md:flex justify-between  items-center gap-1">
+              <div>
+              </div>
+              {user ? (
+                <>
+
+              <button
                   onClick={() => navigate("/Favorite")}
-                  className="px-1 py-2 rounded-md hover:text-white transition"
+                  className="px-1 py-2 rounded-md hover:text-cyan-400 transition"
                 >
                   <MdOutlineFavoriteBorder size={25} />
                 </button>
-              </div>
-
-              {user ? (
-                <>
                   <div
                     className="relative"
                     onClick={() => setUserTogel(!userTogel)}
                   >
-                    <span className="h-10 rounded-full flex justify-center items-center hover:text-white">
+                    <span className="h-10 rounded-full flex justify-center items-center hover:text-cyan-400">
                       <LuUser size={22} />
                     </span>
                   </div>
                   <div
-                    className={`bg-gray-400/40 backdrop-blur-2xl w-1/6 p-5 right-2 rounded-lg flex flex-col gap-5 top-18 absolute ${
+                    className={`bg-gray-700/40 backdrop-blur-2xl w-1/6 p-5 right-2 rounded-lg flex flex-col gap-5 top-19 absolute ${
                       userTogel ? "" : "hidden"
                     }`}
-                  >
-                    <div className="flex gap-2 items-center">
-                      <span className=" rounded-full flex justify-center items-center">
-                        <FaUser size={22} />
+                  > 
+                    <div className="flex gap-2 items-center hover:bg-cyan-400 hover:text-black h-10 transition rounded-md px-2">
+                      <span className=" rounded-full flex justify-center  ">
+                        <LuUser size={22} />
                       </span>
-                      {user.name}
+                      @{user.name}
                     </div>
-                    <button
+                    <p
                       onClick={handleLogout}
-                      className="border-2 border-gray-200 px-3 py-1 rounded-md hover:bg-gray-400 transition"
+                      className=" flex gap-2 items-center h-10 rounded-md hover:bg-cyan-400 hover:text-black transition px-2"
                     >
-                      Logout
-                    </button>
+                     <HiOutlineLogin size={22}/> Logout
+                    </p>
                   </div>
                 </>
               ) : (
                 <Link
                   to="/auth"
-                  className="border-2 border-gray-200 px-4 py-1 text-sm"
+                  className=" bg-cyan-400 text-black flex items-center gap-3 font-medium hover:border border-cyan-400 hover:bg-transparent hover:text-white  px-6 py-1 text-sm"
                 >
-                  Login
+                <HiOutlineLogout/>  Login
                 </Link>
               )}
             </div>
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden text-2xl text-white"
+              className="md:hidden text-2xl text-cyan-400"
             >
               {menuOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
 
           {menuOpen && (
-            <div className="flex bg-gray-300/30 p-5 backdrop-blur-sm flex-col-reverse rounded-md mt-4 gap-4 md:hidden">
-              <div className="relative">
-                <input
-                  className="py-2 px-9 w-full text-white border-2 border-gray-200 outline-none rounded-md bg-transparent placeholder-gray-200"
-                  value={searchQuery}
-                  placeholder="Search..."
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <i className="absolute text-white top-3 left-3 text-lg">
-                  <IoSearch />
-                </i>
-              </div>
+            <div className="flex justify-between px-5 border-t   mt-4 pt-5 gap-5 md:hidden">
+
 
               <button
-                onClick={() => {
-                  navigate("/Favorite");
-                  setMenuOpen(false);
-                }}
-                className="border-2 border-gray-200  py-2 rounded-md hover:bg-gray-400 hover:text-white transition flex items-center justify-center gap-1"
-              >
-                <MdFavorite /> Favorites
-              </button>
+                  onClick={() => { navigate("/Favorite"); setMenuOpen(false)}}
+                  className="px-1 py-2 rounded-md hover:text-cyan-400 transition"
+                >
+                  <MdOutlineFavoriteBorder size={25} />
+                </button>
 
               {user ? (
                 <>
-                  <span className="text-gray-300 text-center text-sm">
-                    {user.email}
-                  </span>
-                  <button
-                    onClick={() => {
+                     <div className="flex gap-2 items-center hover:bg-cyan-400 hover:text-black h-10 transition rounded-md px-2">
+                      <span className=" rounded-full flex justify-center  ">
+                        <LuUser size={22} />
+                      </span>
+                      @{user.name}
+                    </div>
+                  <p
+                      onClick={() => {
                       handleLogout();
                       setMenuOpen(false);
                     }}
-                    className="border-2 border-gray-200 py-2 rounded-md hover:bg-gray-200 transition"
-                  >
-                    Logout
-                  </button>
+                      className=" flex gap-2 items-center h-10 rounded-md  hover:text-black transition px-2"
+                    >
+                     <HiOutlineLogin size={22}/> Logout
+                    </p>
+  
+                  
                 </>
               ) : (
                 <Link
                   to="/auth"
-                  onClick={() => setMenuOpen(false)}
-                  className="border-2 border-gray-200 py-2 text-center rounded-md hover:bg-gray-200 transition"
+                  onClick={()=> setMenuOpen(false)}
+                  className="flex justify-center items-center gap-3 text-cyan font-medium  hover:bg-transparent hover:text-black  px-6 py-1 text-md"
                 >
-                  Login
+                 <HiOutlineLogout size={22}/> Login
                 </Link>
               )}
             </div>
@@ -290,11 +301,11 @@ const Home = () => {
 
     
           
-          <div className={`flex flex-col md:flex-row  justify-between items-center absolute ${togelFooter ? ' -bottom-50 md:-bottom-52' : 'bottom-0'}  right-1 left-1 bg-gray-400/10 backdrop-blur-xs rounded-t-4xl shadow-lg p-5`}>
+          <div className={`flex flex-col md:flex-row  justify-between items-center absolute ${togelFooter ? ' -bottom-50 md:-bottom-52' : 'bottom-0'}  right-1 left-1 bg-gray-900/30 backdrop-blur-xs transition-all ease-in-out rounded-t-4xl shadow-lg p-5`}>
           <button onClick={()=> setTogelFooter(!togelFooter)} className="absolute w-20 h-20 -top-12 right-0 text-4xl">{!togelFooter ? <MdOutlineKeyboardArrowDown size={50} /> :  <MdOutlineKeyboardArrowUp size={50} /> }</button>
           {selectedMovie && (
-            <div className="relative z-10 max-w-2xl">
-              <h2 className="text-lg font-Goldman font-bold text-white">
+            <div data-aos="fade-rigth" className="relative z-10 max-w-2xl">
+              <h2 className="text-lg font-Goldman font-bold text-cyan-400">
                 {selectedMovie.title}
               </h2>
               <p className="text-sm text-gray-200 mt-1">
@@ -306,13 +317,13 @@ const Home = () => {
               <div className="flex gap-3 mt-5">
                 <button
                   onClick={() => navigate(`/movie/${selectedMovie.id}`)}
-                  className="hover:bg-gray-200 hover:text-white font-semibold py-2 px-7 bg-white text-black flex justify-center items-center transition"
+                  className="bg-gradient-to-r from-cyan-400 to-purple-400 w-1/3 text-gray-50 font-semibold py-2 px-3  hover:bg-cyan-400  flex justify-center items-center transition gap-3"
                 >
                   watch <GoTriangleRight />
                 </button>
                 <button
                   onClick={() => handleLoveMovie(selectedMovie)}
-                  className="px-4 py-2 rounded border"
+                  className="px-4 py-2 rounded border hover:border-0"
                 >
                   <MdOutlineFavoriteBorder size={20} />
                 </button>
@@ -320,14 +331,14 @@ const Home = () => {
             </div>
           )}
 
-          <div className="relative z-10 mt-5 w-full md:max-w-3xl overflow-x-auto scrollbar-hide">
+          <div  className="relative z-10 mt-5 w-full md:max-w-3xl overflow-x-auto scrollbar-hide">
             <div className="relative w-full flex gap-5">
               {movies.map((movie) => (
-                <div key={movie.id} className="relative">
+                <div key={movie.id} className="relative border rounded-md ">
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
-                    className="cursor-pointer rounded-lg min-w-30 md:w-60 object-cover rshadow-lg"
+                    className="cursor-pointer rounded-md min-w-30 md:w-60 object-cover  shadow-lg"
                     onClick={() => handleMovieClick(movie)}
                   />
                 </div>
@@ -335,7 +346,7 @@ const Home = () => {
 
               <button
                 onClick={loadMore}
-                className={`w-1/3 rounded-full mt-10 h-30 text-5xl text-white items-center flex justify-center font-semibold py-2 px-5 ${
+                className={`w-1/3 rounded-full mt-10 h-30 text-5xl text-cyan-400 items-center flex justify-center font-semibold py-2 px-5 ${
                   loading ? "animate-spin" : ""
                 }`}
               >

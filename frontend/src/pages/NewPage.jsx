@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
+import { BsHeartbreak } from "react-icons/bs";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { GoTriangleRight } from "react-icons/go";
@@ -68,7 +70,7 @@ const handleDeleteMovie = async (id) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center mx-auto min-h-screen">
-        <p className="p-4 w-30 h-30 border-8 border-white rounded-full border-t-transparent animate-spin"></p>
+        <p className="p-4 w-30 h-30 border-8 border-cyan-400 rounded-full border-t-transparent animate-spin"></p>
       </div>
     );
   }
@@ -85,10 +87,19 @@ const handleDeleteMovie = async (id) => {
       <div className="absolute bg-black/10 w-full backdrop-blur-2xl h-full"></div>
 
       <div className="absolute max-w-7xl mx-auto top-0 md:top-20 p-10 right-0 left-0 backdrop-blur-sm bg-gray-700/20 rounded-lg min-h-screen md:min-h-200 md:max-h-200 overflow-y-auto scrollbar-hide">
-        <h1 className="text-3xl text-center py-3 font-bold font-Goldman">
+<div className="flex justify-between items-center my-5">
+          <h1 className="text-3xl text-cyan-400  py-2 font-bold font-Goldman">
           {movies.length > 0 ? "Your Favorite Movies" : "No Movies Found"}
         </h1>
+      <button
+          onClick={() => navigate("/")}
+          className=" w-1/3  text-gray-50 font-semibold py-2 px-3 flex items-center justify-end transition gap-3"
+        >
 
+          <IoChevronBackCircleOutline/> Back To Menu
+        </button>
+
+</div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4">
           {movies.map((movie) => (
             <div key={movie.tmdbId}>
@@ -102,17 +113,17 @@ const handleDeleteMovie = async (id) => {
                 {/* Delete Button */}
                 <div
                   onClick={() => handleDeleteMovie(movie._id)}
-                  className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white w-7 h-7 flex items-center justify-center rounded-full cursor-pointer"
+                  className="absolute -top-3 right-0 bg-red-500 hover:bg-red-600 text-white-400 font-extrabold w-7 h-7 flex items-center justify-center rounded-full cursor-pointer"
                   title="Delete Movie"
                 >
-                  ✕
+                  <BsHeartbreak/>
                 </div>
 
                 {/* Overlay */}
-                <div className="absolute bottom-0 w-full bg-slate-800/20 h-1/3 rounded-t-4xl opacity-0 hover:opacity-100 flex items-center justify-center gap-5 pb-4 transition-opacity duration-500">
+                <div className="absolute bottom-0 w-full bg-slate-800/10 h-[90%] rounded-t-4xl opacity-0 hover:opacity-100 flex items-center justify-center gap-5 pb-4 transition-opacity duration-500">
                   <button
                     onClick={() => navigate(`/movie/${movie.tmdbId}`)}
-                    className="bg-white text-black font-semibold py-2 px-7 hover:bg-yellow-400 flex justify-center items-center transition"
+                    className="bg-gradient-to-r from-cyan-400 to-purple-400  hover: font-semibold py-2 px-7  flex justify-center items-center transition"
                   >
                     Watch <GoTriangleRight />
                   </button>
@@ -129,12 +140,7 @@ const handleDeleteMovie = async (id) => {
           ))}
         </div>
 
-        <button
-          onClick={() => navigate("/")}
-          className="bg-white w-1/2 mx-auto text-black mt-5 font-semibold py-2 px-3  flex justify-center items-center transition"
-        >
-          Back To Menu
-        </button>
+
       </div>
     </div>
   );

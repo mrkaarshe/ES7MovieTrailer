@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { GoTriangleRight } from "react-icons/go";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
 const API_KEY = 'a6dc73708449c9ddbd194f71534d5001';
 
 const MovieDetails = () => {
@@ -34,12 +35,12 @@ const MovieDetails = () => {
     navigate('/')
   }
 
-  if (!movie) return <div className=' flex justify-center items-center my-30 mx-auto min-h-screen' ><p className="p-4  w-30 h-30 border-8 border-white rounded-full border-t-transparent animate-spin"></p></div>;
+  if (!movie) return <div className=' flex justify-center items-center my-30 mx-auto min-h-screen' ><p className="p-4  w-30 h-30 border-8 border-cyan-400 rounded-full border-t-transparent animate-spin"></p></div>;
 
   return (
     <>
     <div  
-         className=" min-h-screen  absolute z-10  top-0 left-0 right-0 bg-black/80   text-white transition-all duration-700 ease-in-out"
+         className=" min-h-screen  absolute z-10  top-0 left-0 right-0 bg-black/80   text-cyan-400 transition-all duration-700 ease-in-out"
       style={{
         backgroundImage: movie
           ? `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`
@@ -60,7 +61,7 @@ const MovieDetails = () => {
       }}>
        <div className='flex flex-col justify-between items-center gap-5'>
        <div className='flex flex-col lg:flex-row gap-5 w-full'>
-        <div className='bg-gray-700/10 backdrop-blur-sm w-1/1 lg:w-1/3 py-3 rounded-md px-2 mt-10'>
+        <div className='bg-gray-700/10 backdrop-blur-sm w-1/1 lg:w-110 py-3  rounded-md px-5 mt-10'>
         <div className='flex gap-3 justify-start  '>
           <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -68,7 +69,7 @@ const MovieDetails = () => {
         alt={movie.title}
       />
       <div>
-              <h2 className="text-xl md:text-3xl font-semibold font-Goldman text-white">
+              <h2 className="text-xl md:text-3xl font-semibold font-Goldman text-cyan-400">
                         {movie?.title}
                       </h2>
             <p className="text-sm text-gray-200 mt-1">
@@ -83,9 +84,9 @@ const MovieDetails = () => {
                       <div className="flex gap-3 mt-5">
                         <button
                           onClick={() => navigate(`/`)}
-                          className="bg-white text-black font-semibold py-2 px-3  hover:bg-gray-200 hover:text-white  flex justify-center items-center transition"
+                          className="bg-gradient-to-r from-cyan-400 to-purple-400 w-1/1 text-gray-50 font-semibold py-2 px-3  hover:bg-cyan-400  flex justify-center items-center transition gap-3 "
                         >
-                         - Back To Menu 
+                         <IoChevronBackCircleOutline/> Back To Menu 
                         </button>
 
                       </div>
