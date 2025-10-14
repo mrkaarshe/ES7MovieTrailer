@@ -11,7 +11,7 @@ const app = express();
 import cors from "cors";
 
 app.use(cors({
-  origin: "http://localhost:5173", // frontend-kaaga
+  origin: "https://kaarshemovietrailer.onrender.com/", 
   methods: ["GET","POST","DELETE","PUT","OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
