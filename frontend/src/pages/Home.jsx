@@ -91,7 +91,7 @@ const Home = () => {
     }
 
     try {
-      const favoritesRes = await axios.get("http://localhost:3000/api/favorites", {
+      const favoritesRes = await axios.get("https://kaarshemovietrailer.onrender.com/api/favorites", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -105,7 +105,7 @@ const Home = () => {
       }
 
       const res = await axios.post(
-        "http://localhost:3000/api/favorites",
+        "https://kaarshemovietrailer.onrender.com/api/favorites",
         {
           tmdbId: selectedMovie.id,
           title: selectedMovie.title,

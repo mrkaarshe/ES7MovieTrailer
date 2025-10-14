@@ -21,7 +21,7 @@ const FavoritsPage = () => {
         return;
       }
 
-      const res = await axios.get("http://localhost:3000/api/favorites", {
+      const res = await axios.get("https://kaarshemovietrailer.onrender.com/api/favorites", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,7 +50,7 @@ const handleDeleteMovie = async (id) => {
     }
 
     const res = await axios.delete(
-      `http://localhost:3000/api/favorites/${id}`,
+      `https://kaarshemovietrailer.onrender.com/api/favorites/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

@@ -19,7 +19,7 @@ export default function AuthPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/login", {
+      const res = await axios.post("https://kaarshemovietrailer.onrender.com/api/login", {
         email,
         password,
       });
@@ -35,7 +35,7 @@ export default function AuthPage() {
 const handleRegister = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post("http://localhost:3000/api/register", {
+    const res = await axios.post("https://kaarshemovietrailer.onrender.com/api/register", {
       name,
       email,
       password,
