@@ -45,7 +45,7 @@ const Home = () => {
     if (reset) {
       setMovies(filteredMovies);
       if (filteredMovies.length > 0)
-        setSelectedMovie(filteredMovies[18] || filteredMovies[0]);
+        setSelectedMovie(filteredMovies[19] || filteredMovies[0]);
     } else {
       setMovies((prev) => [...prev, ...filteredMovies]);
     }
@@ -60,7 +60,7 @@ const Home = () => {
  
   useEffect(() => {
     if (movies.length > 0 && !selectedMovie) {
-      setSelectedMovie(movies[18] || movies[0]);
+      setSelectedMovie(movies[19] || movies[0]);
     }
   }, [movies, selectedMovie]);
 
@@ -175,7 +175,7 @@ const Home = () => {
         }}
       >
         {/*  Header */}
-        <nav data-aos="fade-down" className="backdrop-blur-xs bg-gray-900/30 text-cyan-400 p-5 mmin-h-20  shadow-md rounded-b-3xl">
+        <nav data-aos="fade-down" className="backdrop-blur-xs bg-gray-900/30 text-cyan-400 p-5 mmin-h-20  shadow-md rounded-b-lg">
           <div className="flex justify-end gap-3 items-center">
             <h1
               onClick={() => navigate("/")}
@@ -301,7 +301,7 @@ const Home = () => {
 
     
           
-          <div className={`flex flex-col md:flex-row  justify-between items-center absolute ${togelFooter ? ' -bottom-50 md:-bottom-52' : 'bottom-0'}  right-1 left-1 bg-gray-900/30 backdrop-blur-xs transition-all ease-in-out rounded-t-4xl shadow-lg p-5`}>
+          <div className={`flex flex-col md:flex-row  justify-between items-center absolute ${togelFooter ? ' -bottom-51 md:-bottom-52' : 'bottom-0'}  right-1 left-1 bg-gray-900/30 backdrop-blur-xs transition-all ease-in-out rounded-t-lg shadow-lg p-5`}>
           <button onClick={()=> setTogelFooter(!togelFooter)} className="absolute w-20 h-20 -top-12 right-0 text-4xl">{!togelFooter ? <MdOutlineKeyboardArrowDown size={50} /> :  <MdOutlineKeyboardArrowUp size={50} /> }</button>
           {selectedMovie && (
             <div data-aos="fade-rigth" className="relative z-10 max-w-2xl">

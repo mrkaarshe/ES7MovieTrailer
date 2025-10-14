@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { GoTriangleRight } from "react-icons/go";
 import { toast } from "sonner";
-const NewPage = () => {
+const FavoritsPage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -146,4 +146,4 @@ const handleDeleteMovie = async (id) => {
   );
 };
 
-export default NewPage;
+export default FavoritsPage;

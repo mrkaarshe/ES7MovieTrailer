@@ -56,13 +56,13 @@ const handleRegister = async (e) => {
   return (
     <div className="flex relative items-center justify-center min-h-screen  bg-black text-white"
           style={{
-        backgroundImage: `url()`,
+        backgroundImage: `url(./backgroun.jpeg)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}>
-        <div className="absolute w-full bg-black/40 backdrop-blur-2xl h-full "></div>
+        <div className="absolute w-full bg-black/40 backdrop-blur-sm h-full "></div>
       <div className="absolute bg-gray-900/40  p-8 rounded-2xl shadow-lg w-full max-w-md border border-cayn-400">
-        <h1 className="text-3xl font-bold text-center text-white mb-6 font-Goldman">
+        <h1 className="text-3xl font-bold text-center text-cyan-400 mb-6 font-Goldman">
           Welcome
         </h1>
 
@@ -108,11 +108,11 @@ const handleRegister = async (e) => {
               />
               <button
                 type="submit"
-                className="w-full py-3 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg transition"
+                className="w-full py-3 bg-gradient-to-r from-cyan-400 to-purple-400 text-white font-semibold rounded-lg transition"
               >
                 Login
               </button>
-              <Link to={'/'} className="text-sm flex justify-center">Back To Menu</Link>
+              <Link to={'/'} className="text-sm flex text-cyan-400 justify-center">Back To Menu</Link>
             </form>
           </TabsContent>
 
