@@ -94,7 +94,7 @@ const MovieDetails = () => {
                       <div className="flex gap-3 mt-5">
                         <button
                           onClick={() => navigate(`/`)}
-                          className="bg-gradient-to-r from-cyan-400 to-purple-400 w-1/2 text-gray-50 font-semibold py-2 px-3  hover:bg-cyan-400  flex justify-center items-center transition gap-3 "
+                          className="bg-gradient-to-r from-cyan-400 to-purple-400 w-1/1 text-gray-50 font-semibold py-2 px-3  hover:bg-cyan-400  flex justify-center items-center transition gap-3 "
                         >
                          <IoChevronBackCircleOutline/> Back To Menu 
                         </button>
